@@ -11,6 +11,7 @@ terraform {
 
 provider "github" {
   owner = var.repository_owner
+  token = var.github_token
 }
 
 data "github_repository" "current" {
@@ -176,4 +177,11 @@ variable "discord_webhook_url" {
   description = "Webhook URL of the Discord channel that should receive pull request notifications."
   type        = string
   default     = "https://discord.com/api/webhooks/REPLACE_WITH_REAL_WEBHOOK"
+}
+
+variable "actions_pat" {
+  description = "Personal access token for GitHub Actions"
+  type        = string
+  sensitive   = true
+  default     = "ghp_placeholderpersonalaccesstoken0000000000"
 }
